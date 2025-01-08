@@ -1,25 +1,45 @@
-const fs = require('fs');
-const { default: ollama } = require("ollama"); 
+import fs from "fs";
+import ollama from "ollama";
 
-async function runChat() {
+
+function loadFile(filePath) {
   try {
-    const inputFilePath = "q3.txt"
-    const inputContent = fs.readFileSync(inputFilePath, "utf-8")
-
-    const response = await ollama.chat({
-      model: "llama3.2:latest",
-      messages: [{ role: "user", content: inputContent }]
-    })
-
-    const chatbotResponse = response.message.content
-
-    const outputFilePath = "a3.txt"
-    fs.writeFileSync(outputFilePath, chatbotResponse, "utf-8")
-
-    console.log("Chatbot response has been saved to output.txt.")
+    return fs.readFileSync(filePath, "utf-8");
   } catch (error) {
-    console.error("Error occurred:", error.message)
+    console.error('Error loading file at ${filePath}:, error.message');
+    throw error;
   }
 }
 
-runChat()
+
+function saveFile(filePath, content) {
+  try {
+    fs.writeFileSync(filePath, content, "utf-8");
+    console.log('Response has been saved to ${filePath}.');
+  } catch (error) {
+    console.error('Error saving to file at ${filePath}:, error.message');
+    throw error;
+  }
+}
+
+
+async function executeChat() {
+  try {
+    const inputFilePath = "q.txt";
+    const inputContent = loadFile(inputFilePath);
+
+    const response = await ollama.chat({
+      model: "qwen2:0.5b",
+      messages: [{ role: "user", content: inputContent }]
+    });
+
+    const chatbotResponse = response.message.content;
+
+    const outputFilePath = "a.txt";
+    saveFile(outputFilePath, chatbotResponse);
+  } catch (error) {
+    console.error("Error occurred:", error.message);
+  }
+}
+
+executeChat();
