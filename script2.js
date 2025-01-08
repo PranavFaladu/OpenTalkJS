@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const { default: ollama } = require("ollama");
 
-// Function to read questions from a directory
+
 function readQuestionsFromDirectory(directoryPath) {
   const files = fs.readdirSync(directoryPath);
   const questions = [];
@@ -12,7 +12,7 @@ function readQuestionsFromDirectory(directoryPath) {
     if (fs.lstatSync(filePath).isFile() && file.endsWith(".txt")) {
       const content = fs.readFileSync(filePath, "utf-8");
       questions.push({
-        question: file.replace(".txt", ""), // Use file name as question
+        question: file.replace(".txt", ""),
         task: content,
       });
     }
@@ -21,7 +21,7 @@ function readQuestionsFromDirectory(directoryPath) {
   return questions;
 }
 
-// Function to get chatbot response for a task
+
 async function getChatbotResponse(taskContent) {
   try {
     const response = await ollama.chat({
@@ -35,7 +35,7 @@ async function getChatbotResponse(taskContent) {
   }
 }
 
-// Function to create output folder if it doesn't exist
+
 function createOutputFolder(categoryName, outputFolderPath) {
   const categoryFolderPath = path.join(outputFolderPath, categoryName);
   if (!fs.existsSync(categoryFolderPath)) {
@@ -45,7 +45,7 @@ function createOutputFolder(categoryName, outputFolderPath) {
   return categoryFolderPath;
 }
 
-// Function to save each task response as a .txt file
+
 async function saveResponseToFile(
   categoryName,
   responseIndex,
@@ -65,11 +65,11 @@ async function saveResponseToFile(
   }
 }
 
-// Main function to run the chat processing
+
 async function runChat() {
   try {
-    const inputDirPath = "question"; // Root directory for the categories (que/)
-    const outputFolderPath = "output"; // Directory for output
+    const inputDirPath = "question"; 
+    const outputFolderPath = "output"; 
     const categoryType = process.argv[2];
 
     if (!categoryType) {
@@ -79,7 +79,7 @@ async function runChat() {
       return;
     }
 
-    // Read all categories in the "que" directory
+   
     const categoryDirs = fs.readdirSync(inputDirPath);
 
     const filteredCategories = categoryDirs.filter(
