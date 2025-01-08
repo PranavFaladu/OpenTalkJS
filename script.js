@@ -3,7 +3,7 @@ const { default: ollama } = require("ollama");
 
 async function runChat() {
   try {
-    const inputFilePath = "q.txt"
+    const inputFilePath = "q3.txt"
     const inputContent = fs.readFileSync(inputFilePath, "utf-8")
 
     const response = await ollama.chat({
@@ -13,7 +13,7 @@ async function runChat() {
 
     const chatbotResponse = response.message.content
 
-    const outputFilePath = "a.txt"
+    const outputFilePath = "a3.txt"
     fs.writeFileSync(outputFilePath, chatbotResponse, "utf-8")
 
     console.log("Chatbot response has been saved to output.txt.")
