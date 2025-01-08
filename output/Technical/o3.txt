@@ -1,0 +1,57 @@
+**Bug Report**
+
+**Title:** Crashing Issue with Data Import Functionality
+
+**Report Number:** DR-001234
+
+**Date:** March 10, 2024
+
+**Device Information:**
+
+* Operating System: Windows 11 (64-bit)
+* Browser: Google Chrome (version 108.0.4666.111)
+
+**Steps to Reproduce:**
+
+1. Open the application and navigate to the Data Import functionality.
+2. Select a CSV file to import data into the database.
+3. Click on the "Import" button to start the import process.
+4. The application will crash with an error message, indicating that the data import failed.
+
+**Error Message:**
+```
+An unexpected error occurred: cannot parse CSV file
+```
+
+**Expected Result:**
+
+The application should successfully import the data into the database without any errors.
+
+**Actual Result:**
+
+The application crashes immediately after selecting the CSV file to import, resulting in a loss of unsaved work and frustration for users.
+
+**Technical Details:**
+
+* The issue is reproducible on multiple instances of Windows 11 and Google Chrome.
+* The error message persists even when the user provides a valid CSV file.
+* No other functionality within the application appears to be affected by this issue.
+
+**Screenshots/Detailed Error Log:**
+
+ Attached are screenshots of the application's crash screen, as well as a detailed error log for further analysis.
+
+**Steps to Resolve:**
+
+1. Verify that the CSV file is correctly formatted and properly imported into the database.
+2. Investigate potential issues with the data import functionality itself.
+3. Update the application's dependencies and patch any known vulnerabilities.
+
+**Recommendations:**
+
+* Improve error handling to prevent crashes in similar situations.
+* Implement robust testing to ensure data import functionality works correctly across different scenarios.
+
+**Priority:** High
+
+**Severity:** Critical

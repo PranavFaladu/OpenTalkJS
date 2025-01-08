@@ -2,7 +2,7 @@ const fs = require('fs');
 const { default: ollama } = require("ollama");
 const { join } = require('path');
 
-// Function to interact with the Ollama API
+
 async function chatWithModel(content) {
   try {
     const response = await ollama.chat({
@@ -10,21 +10,20 @@ async function chatWithModel(content) {
       messages: [{ role: "user", content }]
     });
 
-    return response.message.content; // Return chatbot response content
+    return response.message.content; 
   } catch (error) {
     throw new Error(`Ollama API error: ${error.message}`);
   }
 }
 
-// Function to process all files in the folder
+
 async function processAllFiles(inputFolderPath, outputFolderPath) {
   try {
-    // Ensure the output directory exists
+ 
     if (!fs.existsSync(outputFolderPath)) {
       fs.mkdirSync(outputFolderPath, { recursive: true });
     }
 
-    // Read all files from the input directory
     const files = fs.readdirSync(inputFolderPath);
 
     for (const fileName of files) {
@@ -32,7 +31,6 @@ async function processAllFiles(inputFolderPath, outputFolderPath) {
         const inputFilePath = join(inputFolderPath, fileName);
         const inputContent = fs.readFileSync(inputFilePath, "utf-8");
 
-        // Get the chatbot response
         const chatbotResponse = await chatWithModel(inputContent);
 
         const outputFilePath = join(outputFolderPath, fileName);
@@ -50,9 +48,7 @@ async function processAllFiles(inputFolderPath, outputFolderPath) {
   }
 }
 
-// Input and Output folder paths
 const inputFolderPath = "Question";
 const outputFolderPath = "Output";
 
-// Start processing files
 processAllFiles(inputFolderPath, outputFolderPath);

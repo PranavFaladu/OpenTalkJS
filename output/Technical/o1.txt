@@ -1,0 +1,122 @@
+**Code Documentation**
+
+This is a sample Python code documentation for a simple calculator class.
+
+```python
+"""
+Calculator Class
+
+This class provides basic arithmetic operations such as addition, subtraction, multiplication and division.
+"""
+
+class Calculator:
+    """
+    Calculator Class
+
+    This class provides methods to perform basic arithmetic operations.
+    
+    Attributes:
+        None
+    
+    Methods:
+        add(x, y) -- Adds two numbers together
+        subtract(x, y) -- Subtracts one number from another
+        multiply(x, y) -- Multiplies two numbers together
+        divide(x, y) -- Divides one number by another
+    """
+
+    def __init__(self):
+        """
+        Initializes the Calculator class
+        
+        Args:
+            None
+    
+        Returns:
+            None
+        """
+        pass
+
+    def add(self, x, y):
+        """
+        Adds two numbers together.
+
+        Args:
+            x (float) -- The first number to add
+            y (float) -- The second number to add
+
+        Returns:
+            float -- The sum of x and y
+        """
+        return x + y
+
+    def subtract(self, x, y):
+        """
+        Subtracts one number from another.
+
+        Args:
+            x (float) -- The first number to subtract
+            y (float) -- The second number to subtract
+
+        Returns:
+            float -- The difference between x and y
+        """
+        return x - y
+
+    def multiply(self, x, y):
+        """
+        Multiplies two numbers together.
+
+        Args:
+            x (float) -- The first number to multiply
+            y (float) -- The second number to multiply
+
+        Returns:
+            float -- The product of x and y
+        """
+        return x * y
+
+    def divide(self, x, y):
+        """
+        Divides one number by another.
+
+        Args:
+            x (float) -- The dividend
+            y (float) -- The divisor
+
+        Returns:
+            float -- The quotient of x and y
+
+        Raises:
+            ZeroDivisionError -- If the divisor is zero
+        """
+        if y == 0:
+            raise ZeroDivisionError("Cannot divide by zero")
+        return x / y
+
+
+# Example usage:
+
+if __name__ == "__main__":
+    calculator = Calculator()
+
+    print(calculator.add(5, 3))  # Output: 8
+    print(calculator.subtract(10, 4))  # Output: 6
+    print(calculator.multiply(7, 2))  # Output: 14
+    try:
+        print(calculator.divide(9, 0))
+    except ZeroDivisionError as e:
+        print(e)  # Output: Cannot divide by zero
+```
+
+This documentation includes:
+
+*   Class description: A brief overview of the Calculator class and its purpose.
+*   Method descriptions: Detailed descriptions of each method in the Calculator class, including their parameters and return values.
+*   Attributes: None
+*   Methods:
+    *   `__init__`: Initializes the Calculator class (not implemented).
+    *   `add`, `subtract`, `multiply`, `divide`: Performs basic arithmetic operations.
+*   Example usage: An example of how to use the Calculator class.
+
+By following standard professional guidelines for code documentation, you can ensure that your code is readable, maintainable, and easy to understand.
